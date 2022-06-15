@@ -1,0 +1,55 @@
+
+
+h1{
+    text-align: center;
+}
+
+img{
+    width:200px;
+    height:300px;
+    position:relative;
+}
+
+
+
+
+
+.delete {
+  opacity: 0;
+  transition: opacity 1s ;
+  pointer-events: none;
+}
+#images {
+    background: url(../img/bg.jpg) 0 0 no-repeat fixed;
+    height: 100%;
+    overflow: hidden;
+    color: #FFFFFF
+ }
+
+.flip{
+    opacity: 0;
+    transition: opacity 1s ;
+    background-color: blue;
+   
+}
+
+
+  
+img:hover {
+    
+    width:170px;
+    height:270px;
+    border-bottom: 15px solid rgb(255, 255, 255); 
+    border-right: 15px solid rgb(255, 255, 255); 
+    border-top: 15px solid rgb(255, 255, 255);
+    border-left: 15px solid rgb(255, 255, 255);
+   border-radius:30px;
+   border-style: double;
+
+    transition-duration: 150ms  ;
+  }
+  
+  
+  
+  
+ 
