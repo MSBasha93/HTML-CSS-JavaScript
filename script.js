@@ -1,55 +1,62 @@
-const imgArr = Array(20).fill().map((_, i) => `./num${i}.png`);
-
-let clickedNumArr=[];
-let clickedIdArr=[];
-
-let randImgArr = imgArr.slice();
+const imgArr = Array(11).fill().map((_, i) => `./num${i}.png`);
+let clickedNumArr=[]; 
+let clickedSrcArr=[];
+let deleted = 0;
+let randImgArr=imgArr.slice();
 
 // Randomize img locations 
 function shuffle(o) {
-  return o.sort(() => (Math.random() > 0.5) ? 1 : -1);
+  return o.sort(() => (Math.random() > 0.5) ? 1 : 1);
+  
 };
-
 let random = shuffle(randImgArr);
-let timeOut;
+console.log(random)
+console.log(imgArr)
 
 // Game play code
+//flip when clicked
 const images = document.querySelectorAll("#images img");
+images.forEach(img =>img.onclick = function () {
+  this.src = randImgArr[this.id];
+  clickedNumArr.unshift(imgArr.indexOf(randImgArr[this.id]));
+  clickedSrcArr.unshift(randImgArr[this.id]);
+  console.log(clickedNumArr)
+  console.log(clickedSrcArr)
+  //check matching if two cards are clicked
+  if(clickedNumArr[1]!=null){
+    //check to delete if matching
+    if(clickedNumArr[0]==clickedNumArr[1]-10 || clickedNumArr[1]==clickedNumArr[0]-10 ){
+      
+      document.getElementById(randImgArr.indexOf(clickedSrcArr[0])).classList.add("delete");
+      document.getElementById(randImgArr.indexOf(clickedSrcArr[1])).classList.add("delete");
+      clickedNumArr.length = 0;
+      clickedSrcArr.length = 0;
+      deleted++;
+      console.log(deleted)
+      if (deleted==1){
+        endScene();
+      }
+        
+    //check to reflip if unmatching 
+    }else {
+      
+     setTimeout(()=>{
+     document.getElementById(randImgArr.indexOf(clickedSrcArr[0])).src="./back.png";
+     document.getElementById(randImgArr.indexOf(clickedSrcArr[1])).src="./back.png";
+     clickedNumArr.length = 0;
+     clickedSrcArr.length = 0;
+     },500);
+    
+    }
 
-    // Flip when clicked
-    images.forEach(img => 
-      img.addEventListener('click', function (event) {
-        clearTimeout(timeOut);
-        this.src = randImgArr[this.id];
-        clickedNumArr.unshift(imgArr.indexOf(randImgArr[this.id]));
-        clickedIdArr.unshift(randImgArr[this.id]);
-        console.log(clickedNumArr)
-        console.log(clickedIdArr)
-        // Check matching if two cards are clicked
-        if (clickedNumArr[1] != null) {
-          if (clickedNumArr[0] == clickedNumArr[1]-10 || clickedNumArr[1] == clickedNumArr[0]-10) {
-            // Delete if matching
-            document.getElementById(randImgArr.indexOf(clickedIdArr[0])).classList.add("delete");
-            document.getElementById(randImgArr.indexOf(clickedIdArr[1])).classList.add("delete");
-            clickedNumArr.length = 0;
-            clickedIdArr.length = 0;
-          } else if (clickedNumArr[0] != clickedNumArr[1]-10 || clickedNumArr[1] != clickedNumArr[0]-10) {
-            // Reflip if unmatching
+  }
+});     
 
-            // TODO: We should disable the event listener (onclick) here so that people can't click during the timeout.
+function endScene(){
 
-            setTimeout(()=>{
-              document.getElementById(randImgArr.indexOf(clickedIdArr[0])).src="./back.png";
-              document.getElementById(randImgArr.indexOf(clickedIdArr[1])).src="./back.png";
-
-              // TODO: Then re-enable it here, so that people can click cards again.
-
-              clickedNumArr.length=0;
-              clickedIdArr.length=0;
-            },500);
-          }
-        }
-      })
-    );
-
-// Decision making is to be based on string value of img.src directly
+  const button = document.createElement("button");
+  button.setAttribute('class', 'btn');  
+  button.textContent = 'New Game';
+  button.setAttribute('onClick', 'location.reload()'); 
+  document.getElementById("endScene").appendChild(button);
+}
