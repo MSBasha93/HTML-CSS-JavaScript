@@ -1,24 +1,19 @@
-
-
-h1{
+h1 {
     text-align: center;
 }
 
-img{
+#images img {
     width:200px;
     height:300px;
     position:relative;
 }
 
-
-
-
-
 .delete {
   opacity: 0;
-  transition: opacity 1s ;
+  transition: opacity 1s;
   pointer-events: none;
 }
+
 #images {
     background: url(../img/bg.jpg) 0 0 no-repeat fixed;
     height: 100%;
@@ -26,7 +21,7 @@ img{
     color: #FFFFFF
  }
 
-.flip{
+.flip {
     opacity: 0;
     transition: opacity 1s ;
     background-color: blue;
@@ -34,8 +29,7 @@ img{
 }
 
 
-  
-img:hover {
+#images img:hover {
     
     width:170px;
     height:270px;
