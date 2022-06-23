@@ -1,0 +1,96 @@
+h1{
+    text-align: center;
+    font-size: 80px;
+}
+h2{
+    text-align: center;
+    font-size: 40px;
+}
+
+img{
+    width:200px;
+    height:300px;
+    
+}
+.delete {
+    opacity: 0;
+    transition: opacity 1s ;
+    pointer-events: none;
+}  
+  
+#images img:hover {
+    
+    width:170px;
+    height:270px;
+    border-bottom: 15px solid rgb(150, 147, 147); 
+    border-right: 15px solid rgb(150, 147, 147); 
+    border-top: 15px solid rgb(150, 147, 147);
+    border-left: 15px solid rgb(150, 147, 147);
+    border-radius:30px;
+    border-style: double;
+    transition-duration: 150ms  ;
+}
+table {
+    
+    table-layout: fixed;
+    text-align: center;
+    width: 1200px;
+    height: 1200px;
+    position: relative; 
+    margin-left: 20%;
+    margin-top: 2%;
+}
+  
+
+td {
+    width: 220px;
+    height: 320px;
+    
+}
+  
+#screens{
+    margin-top: 0%; 
+    text-align: center;
+    position: relative;
+}
+#counter {
+    width: 100px;
+    font-size: 70px;
+    background-color: black;
+    color: red;
+    padding: 25px;
+    border-radius: 10px;
+    margin-left: 75%;
+    position: absolute;
+  }   
+#timer {
+    width: 100px;
+    font-size: 70px;
+    background-color: black;
+    color: red;
+    padding: 25px;
+    border-radius: 10px;
+    margin-left: 25%; 
+    position: absolute;
+  }   
+.btn{
+    width: 350px;
+    height: 150px;
+    font-size: 50px;
+    text-align: center;
+    text-align: wrap;
+    font-weight: bold;
+}
+#highScores{
+    font-size: 70px;
+    color: rgb(255, 0, 85);
+    margin-top: 0%;
+    margin-left: 0%;
+    position: absolute;
+}
+li{
+    position: relative;
+    margin-left: 4%;
+    font-size: 50px;
+    margin-top: 1%;
+}
